@@ -1,11 +1,8 @@
 <?php
-// Include DB connection setup
 include_once(__DIR__ . '/../Core/initialize.php');
 
-// Get the incoming JSON data
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Check for required fields
 if (
     isset($data['title']) &&
     isset($data['artist']) &&
@@ -15,7 +12,6 @@ if (
     isset($data['location']) &&
     isset($data['tickets_available'])
 ) {
-    // Assign fields to variables
     $title = $data['title'];
     $artist = $data['artist'];
     $date = $data['date'];
@@ -24,11 +20,24 @@ if (
     $location = $data['location'];
     $tickets = $data['tickets_available'];
 
+    // 🔗 CALL SPOTIFY
+    $spotify = json_decode(file_get_contents("http://localhost:8888/Concert-Booking/API/spotify/search_artist.php?artist=" . urlencode($artist)), true);
+
+    // Defaults if not found
+    $artist_image = $spotify['image'] ?? null;
+    $artist_genres = isset($spotify['genres']) ? json_encode($spotify['genres']) : null;
+    $spotify_url = $spotify['spotify_url'] ?? null;
+
     try {
-        // Prepare and execute the insert statement
-        $query = "INSERT INTO concerts (title, artist, date, time, genre, location, tickets_available) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO concerts 
+        (title, artist, date, time, genre, location, tickets_available, artist_image, artist_genres, spotify_url) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         $stmt = $db->prepare($query);
-        $stmt->execute([$title, $artist, $date, $time, $genre, $location, $tickets]);
+        $stmt->execute([
+            $title, $artist, $date, $time, $genre, $location, $tickets,
+            $artist_image, $artist_genres, $spotify_url
+        ]);
 
         echo json_encode(["status" => "success", "message" => "Concert created successfully"]);
     } catch (PDOException $e) {
