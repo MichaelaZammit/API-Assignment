@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<, initial-scale=1.0">
-    <title>Document</title>
+    <title>Consert</title>
 </head>
 <body>
-    <?php echo 'hi'?>
+    <?php echo 'Consert Tickets'?>
 </body>
 </html>
