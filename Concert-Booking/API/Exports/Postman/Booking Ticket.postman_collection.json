@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "b6837099-ffee-4c11-8831-b22e26aaad34",
+		"name": "Booking Ticket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41844239",
+		"_collection_link": "https://assignment-3083.postman.co/workspace/Consert-Booking~49bf209a-d5de-4c2a-bdcc-9ce02c67b74d/collection/41844239-b6837099-ffee-4c11-8831-b22e26aaad34?action=share&source=collection_link&creator=41844239"
+	},
+	"item": [
+		{
+			"name": "book_ticket",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": 2,\n  \"concert_id\": 2,\n  \"tickets_booked\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/Concert-Booking/API/bookings/book_ticket.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"Concert-Booking",
+						"API",
+						"bookings",
+						"book_ticket.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_bookings",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/Concert-Booking/API/bookings/get_all_bookings.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"Concert-Booking",
+						"API",
+						"bookings",
+						"get_all_bookings.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_user_bookings",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/Concert-Booking/API/bookings/get_user_bookings.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"Concert-Booking",
+						"API",
+						"bookings",
+						"get_user_bookings.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel_booking",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"booking_id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/Concert-Booking/API/bookings/cancel_booking.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"Concert-Booking",
+						"API",
+						"bookings",
+						"cancel_booking.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
